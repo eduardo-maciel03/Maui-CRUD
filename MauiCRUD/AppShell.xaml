@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MauiCRUD.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MauiCRUD"
+    
+    xmlns:views="clr-namespace:MauiCRUD.Views"
+    
+    Shell.FlyoutBehavior="Disabled">
+
+    <ShellContent
+        Title="Crud"
+        ContentTemplate="{DataTemplate views:CrudView}"
+        Route="CrudView" />
+
+    <ShellContent
+        Title="Users"
+        ContentTemplate="{DataTemplate views:UsersView}"
+        Route="UsersView" />
+
+    <ShellContent
+        Title="Edit"
+        ContentTemplate="{DataTemplate views:EditView}"
+        Route="EditView" />
+
+</Shell>

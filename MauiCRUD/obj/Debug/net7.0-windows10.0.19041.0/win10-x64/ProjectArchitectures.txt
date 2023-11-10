@@ -1,0 +1,1 @@
+D:\Projetos\MauiCRUD\MauiCRUD\MauiCRUD.csproj;x64

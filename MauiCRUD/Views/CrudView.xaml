@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiCRUD.Views.CrudView"
+             
+             xmlns:viewModel="clr-namespace:MauiCRUD.ViewModels"
+             x:DataType="viewModel:CrudViewModel"
+             
+             Title="Página Principal">
+    
+    <VerticalStackLayout Margin="30">
+        
+        <Label Text="Bem-vindo a aplicação MVVM, CRUD com SQLite"
+               HorizontalOptions="Center"
+               FontAttributes="Bold"/>
+
+        <Image Source="dotnet_bot.svg"
+               WidthRequest="100"
+               Margin="0,10,0,10"/>
+
+        <Label Text="Registre seu usuário"
+               HorizontalOptions="Center"
+               Margin="0,0,0,15"/>
+
+        <Label Text="E-mail"/>
+        <Entry Text="{Binding Email}"/>
+
+        <Label Text="Nome"/>
+        <Entry Text="{Binding Username}"/>
+
+        <Label Text="Data de nascimento"/>
+        <DatePicker Date="{Binding Birthday}"/>
+
+        <Button Text="Registrar"
+                Margin="0,15,0,10"
+                Command="{Binding SaveCommand}"/>
+
+        <Button Text="Listar registros"
+                Command="{Binding GetUsersCommand}"/>
+
+    </VerticalStackLayout>
+</ContentPage>

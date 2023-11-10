@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiCRUD.Views.UsersView"
+             
+             xmlns:viewModel="clr-namespace:MauiCRUD.ViewModels"
+             x:DataType="viewModel:UsersViewModel"
+             
+             xmlns:models="clr-namespace:MauiCRUD.Models">
+
+    <Shell.TitleView>
+        <HorizontalStackLayout HorizontalOptions="StartAndExpand">
+            <Button Text="&lt;"
+                    TextColor="White"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    Command="{Binding GoBackCommand}"
+                    Background="{StaticResource Primary}"/>
+            <Label Text="Usuários Registrados"
+                   VerticalOptions="Center"
+                   FontSize="20"
+                   TextColor="White"/>
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+
+    <ScrollView>
+        <CollectionView ItemsSource="{Binding ListUsers}">
+
+            <CollectionView.Header>
+                <Label Text="Deslize para o lado para editar ou excluir"
+                       HorizontalOptions="Center"
+                       FontAttributes="Bold"
+                       Margin="20"/>
+            </CollectionView.Header>
+            
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Users">
+
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Deletar"
+                                           BackgroundColor="Red"
+                                           Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:UsersViewModel}}, Path=TapDeleteCommand}"
+                                           CommandParameter="{Binding .}"/>
+                                <SwipeItem Text="Editar"
+                                           BackgroundColor="LightGrey"
+                                           Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:UsersViewModel}}, Path=TapEditCommand}"
+                                           CommandParameter="{Binding .}"/>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+                        <Grid Padding="10">
+                            <Frame CornerRadius="20" HasShadow="True">
+
+                                <VerticalStackLayout>
+                                    
+                                    <HorizontalStackLayout Spacing="5">
+                                        <Label Text="ID:"/>
+                                        <Label Text="{Binding Id}"/>
+                                    </HorizontalStackLayout>
+
+                                    <HorizontalStackLayout Spacing="5">
+                                        <Label Text="Nome:"/>
+                                        <Label Text="{Binding Name}"/>
+                                    </HorizontalStackLayout>
+
+                                    <HorizontalStackLayout Spacing="5">
+                                        <Label Text="E-mail:"/>
+                                        <Label Text="{Binding Email}"/>
+                                    </HorizontalStackLayout>
+
+                                    <HorizontalStackLayout Spacing="5">
+                                        <Label Text="Aniversário:"/>
+                                        <Label Text="{Binding Birthday, StringFormat='{0:MM/dd/yyyy}'}"/>
+                                    </HorizontalStackLayout>
+
+                                </VerticalStackLayout>
+
+                            </Frame>
+                        </Grid>
+
+                    </SwipeView>
+
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+    </ScrollView>
+    
+
+</ContentPage>
